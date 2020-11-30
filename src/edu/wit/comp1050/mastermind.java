@@ -4,10 +4,21 @@ import java.util.Random;
 
 class mastermind{
    public static void main() {
-       System.out.println(getColorAnswer());
+       String Answer = getColorAnswer();
+       System.out.println(Answer);
 
-       //Scanner input = new Scanner(System.in);
-       //String word = input.next();
+       Scanner input = new Scanner(System.in);
+
+       System.out.println("Enter your 4 character guess:");
+       String guess = input.next();
+       guess = guess.toUpperCase();
+
+       for (int i=0;i>3;i++){
+           if(guess.charAt(i)==Answer.charAt(i)){
+               System.out.printf("*");
+               //signify correctness
+           }
+       }
 
     }
 
