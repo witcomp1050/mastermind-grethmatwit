@@ -10,49 +10,41 @@ class mastermind{
        //Select number of attempts
        System.out.println("Select number of attempts (8,10,or 12): ");
        Scanner input = new Scanner(System.in);
-       int attempts = Integer.parseInt(input.next());
+       int attempts = input.nextInt();
 
-       System.out.println("Enter your 4 character guess: ");
+       System.out.println("Enter your guess (up tp 4 characters): ");
        String guess = input.next();
        guess = guess.toUpperCase();
 
-       for (int i=0;i>3;i++){
-           if(guess.charAt(i)==Answer.charAt(i)){
+       for (int h=0;h>3;h++){
+           if(guess.charAt(h)==Answer.charAt(h)){
                System.out.printf("*");
                //signify correctness
            }
-           /*else{
-               for (int j=1;j<attempts;j++){
-                   System.out.println("Enter your 4 character guess: ");
-                   guess = input.next();
-                   guess = guess.toUpperCase();
-                   for (int h=0;h>3;h++){
-                       if(guess.charAt(h)==Answer.charAt(h)){
-                           System.out.printf("*");
-                           //signify correctness
-                       }
-                   }
-
-               }
-           }*/
        }
        if (guess.equals(Answer)){
            System.out.printf("YOU DID IT!");
-       }
-       else{
-           for (int j=1;j<attempts;j++){
-               System.out.println("Enter your 4 character guess: ");
-               guess = input.next();
-               guess = guess.toUpperCase();
-               for (int h=0;h>3;h++){
-                   if(guess.charAt(h)==Answer.charAt(h)){
-                       System.out.printf("*");
-                       //signify correctness
-                   }
-               }
 
-           }
        }
+
+       for (int j=1;j<attempts;j++){
+           System.out.println("Enter your guess (up tp 4 characters): ");
+           guess = input.next();
+           guess = guess.toUpperCase();
+           for (int h=0;h>3;h++){
+               if(guess.charAt(h)==Answer.charAt(h)){
+                   System.out.printf("*");
+                   //signify correctness
+               }
+           }
+           if (guess.equals(Answer)){
+               System.out.printf("YOU DID IT!");
+               break;
+           }
+
+       }
+
+
 
     }
 
