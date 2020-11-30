@@ -3,13 +3,16 @@ import java.util.Scanner;
 import java.util.Random;
 
 class mastermind{
-   public static void main() {
+   public static void main(String[] args) {
        String Answer = getColorAnswer();
        System.out.println(Answer);
 
+       //Select number of attempts
+       System.out.println("Select number of attempts (8,10,or 12): ");
        Scanner input = new Scanner(System.in);
+       int attempts = Integer.parseInt(input.next());
 
-       System.out.println("Enter your 4 character guess:");
+       System.out.println("Enter your 4 character guess: ");
        String guess = input.next();
        guess = guess.toUpperCase();
 
@@ -17,6 +20,37 @@ class mastermind{
            if(guess.charAt(i)==Answer.charAt(i)){
                System.out.printf("*");
                //signify correctness
+           }
+           /*else{
+               for (int j=1;j<attempts;j++){
+                   System.out.println("Enter your 4 character guess: ");
+                   guess = input.next();
+                   guess = guess.toUpperCase();
+                   for (int h=0;h>3;h++){
+                       if(guess.charAt(h)==Answer.charAt(h)){
+                           System.out.printf("*");
+                           //signify correctness
+                       }
+                   }
+
+               }
+           }*/
+       }
+       if (guess.equals(Answer)){
+           System.out.printf("YOU DID IT!");
+       }
+       else{
+           for (int j=1;j<attempts;j++){
+               System.out.println("Enter your 4 character guess: ");
+               guess = input.next();
+               guess = guess.toUpperCase();
+               for (int h=0;h>3;h++){
+                   if(guess.charAt(h)==Answer.charAt(h)){
+                       System.out.printf("*");
+                       //signify correctness
+                   }
+               }
+
            }
        }
 
@@ -49,6 +83,7 @@ class mastermind{
         char D = colorArray[d];
 
 
-        return "A"+"B"+"C"+"D";
+
+        return (""+A+""+B+""+C+""+D);
     }
 }
