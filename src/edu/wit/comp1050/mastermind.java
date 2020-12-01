@@ -16,7 +16,7 @@ class mastermind{
        String guess = input.next();
        guess = guess.toUpperCase();
 
-       for (int h = 0; h < 3; h++){
+       for (int h = 0; h < 4; h++){
            if(guess.charAt(h)==Answer.charAt(h)){
                System.out.println("*");
                //signify correctness
@@ -27,11 +27,11 @@ class mastermind{
 
        }
 
-       for (int j = 1 ; j < attempts ; j++){
+       for (int j = 0 ; j < attempts ; j++){
            System.out.println("Enter your guess (up tp 4 characters): ");
            guess = input.next();
            guess = guess.toUpperCase();
-           for (int h = 0 ; h < 3 ; h++){
+           for (int h = 0 ; h < 4 ; h++){
                if(guess.charAt(h)==Answer.charAt(h)){
                    System.out.println("*");
                    //signify correctness
