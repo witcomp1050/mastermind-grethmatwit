@@ -114,11 +114,11 @@ class mastermind{
         }
         if (defaultSetting.charAt(0)=='N'){
             System.out.printf("%nCan the CodeMaker use duplicate colors? (y/n): ");
-            String duplicate = input.next();
+            String duplicate = input.nextLine();
             duplicate = duplicate.toUpperCase();
 
             System.out.printf("%nCan the CodeMaker use blank spaces? (y/n): ");
-            String blank = input.next();
+            String blank = input.nextLine();
             blank = blank.toUpperCase();
 
 
