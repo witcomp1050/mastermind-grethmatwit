@@ -4,7 +4,7 @@ import java.util.Random;
 
 class mastermind{
    public static void main(String[] args) {
-       Scanner input = new Scanner(System.in).useDelimiter( "(\\b|\\B)" ) ;
+       Scanner input = new Scanner(System.in).useDelimiter("[\r\n/]") ;
        for(int z=0;z<1;){
 
 
