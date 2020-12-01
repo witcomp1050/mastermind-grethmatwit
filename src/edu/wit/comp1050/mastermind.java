@@ -4,42 +4,69 @@ import java.util.Random;
 
 class mastermind{
    public static void main(String[] args) {
-       String Answer = getColorAnswer();
-       System.out.println(Answer);
-
-       //Select number of attempts
-       System.out.println("Select number of attempts (8,10,or 12): ");
        Scanner input = new Scanner(System.in);
-       int attempts = input.nextInt();
+       for(int z=0;z<1;){
+           System.out.printf("%nCan the CodeMaker use duplicate colors? (y/n): ");
+           String duplicate = input.next();
+           System.out.printf("%nCan the CodeMaker use blank spaces? (y/n): ");
+           String blank = input.next();
 
-       System.out.println("Enter your guess (up tp 4 characters): ");
-       String guess = input.next();
-       guess = guess.toUpperCase();
+           String Answer = getColorAnswer(duplicate,blank);
 
-       for (int h = 0; h < 4; h++){
-           if(guess.charAt(h)==Answer.charAt(h)){
-               System.out.println("*");
-               //signify correctness
-           }
-       }
-       if (guess.equals(Answer)){
-           System.out.println("YOU DID IT!");
+           System.out.printf("%nAnswer: " + Answer);
 
-       }
+           //Select number of attempts
+           System.out.printf("%nSelect number of attempts (8,10,or 12): ");
 
-       for (int j = 0 ; j < attempts ; j++){
-           System.out.println("Enter your guess (up tp 4 characters): ");
-           guess = input.next();
+           int attempts = input.nextInt();
+
+           System.out.printf("%nEnter your guess (up to 4 characters): ");
+           String guess = input.next();
            guess = guess.toUpperCase();
-           for (int h = 0 ; h < 4 ; h++){
+
+           for (int h = 0; h < guess.length(); h++){
                if(guess.charAt(h)==Answer.charAt(h)){
-                   System.out.println("*");
+                   System.out.printf("*");
                    //signify correctness
                }
            }
-           if (guess.equals(Answer)){
-               System.out.println("YOU DID IT!");
-               break;
+           if (guess.equals(Answer)&&guess.length()==Answer.length()){
+               System.out.printf("%nYOU DID IT!");
+               System.out.printf("%nPlay again? (y/n): ");
+               String playAgain = input.next();
+               playAgain = playAgain.toUpperCase();
+               if (playAgain.charAt(0) != 'Y'){
+                   z=z++;
+               }
+               continue;
+
+           }
+
+           for (int j = 1 ; j < attempts ; j++){
+               System.out.printf("%nEnter your guess (up to 4 characters): ");
+               guess = input.next();
+               guess = guess.toUpperCase();
+               for (int h = 0 ; h < guess.length() ; h++){
+                   if(guess.charAt(h)==Answer.charAt(h)){
+                       System.out.printf("*");
+                       //signify correctness
+                   }
+               }
+               if (guess.equals(Answer)&&guess.length()==Answer.length()){
+                   System.out.printf("%nYOU DID IT!");
+                   break;
+               }
+               if (j==(attempts-1) && !guess.equals(Answer)){
+                  System.out.printf("%nGood effort!");
+
+               }
+
+           }
+           System.out.printf("%nPlay again? (y/n): ");
+           String playAgain = input.next();
+           playAgain = playAgain.toUpperCase();
+           if (playAgain.charAt(0) != 'Y'){
+               z=z++;
            }
 
        }
@@ -48,7 +75,7 @@ class mastermind{
 
     }
 
-    public static String getColorAnswer(){
+    public static String getColorAnswer(String duplicate, String blank){
 
        //generate array
        char [] colorArray = new char[]{'R','O','Y','G','B','P'};
@@ -78,4 +105,5 @@ class mastermind{
 
         return (""+A+""+B+""+C+""+D);
     }
+
 }
